@@ -35,9 +35,9 @@ export class AddShoppingItemPage {
   }
 
   addItem(item: Item){
-    this.shopping.addItem(item).then(ref => {
-      this.navCtrl.setRoot('HomePage',{key: ref.key});
-    })
+    
+      this.shopping.addItem(item);
+      this.navCtrl.setRoot('HomePage');
   }
 
 }

@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import {AngularFireDatabase} from 'angularfire2/database';
-import { Item } from "../../models/item/item.model";
  
 @Injectable()
 export class ShoppingListService {
 
-    private shoppingListRef =this.db.list<Item>('shopping-list');
+    //private shoppingListRef =this.db.list<Item>('shopping-list');
+    items : {}[];
 
     constructor (private db: AngularFireDatabase){
         
@@ -13,10 +13,17 @@ export class ShoppingListService {
 
     getShoppingList()
     {
-        return this.shoppingListRef;
+        this.db.list("/shopping-list").valueChanges().subscribe((data) => {
+           console.log("DATA", data);
+           
+            this.items = data;
+        });
+        console.log("GetshoppingList",this.items);
+        return this.items;
     }
 
     addItem(item){
-        return this.shoppingListRef.push(item);
+        this.db.list("/shopping-list").push(item);
     }
+    
 }

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 
-import { ShoppingListService } from '../../services/shopping-list/shopping-list.service';
-import { Observable } from 'rxjs/Observable';
-import { Item } from '../../models/item/item.model';
+//import { ShoppingListService } from '../../services/shopping-list/shopping-list.service';
+import { AngularFireDatabase } from 'angularfire2/database';
+
 
 @IonicPage()
 @Component({
@@ -12,20 +12,15 @@ import { Item } from '../../models/item/item.model';
 })
 export class HomePage {
 
-//creation d'un observable
-  shoppingList$: Observable<Item[]>;
+//creation d'une liste d'éléments vide
+  shoppingList: {}[];
 
   constructor(public navCtrl: NavController,
-    private shopping: ShoppingListService) 
+    private db : AngularFireDatabase) 
     {
-      this.shoppingList$ = this.shopping
-      .getShoppingList() // notre liste dans firebase2
-      .snapshotChanges() // clé et valeurs des article
-      .map(changes => {
-          return changes.map(c => ({
-            key: c.payload.key,...c.payload.val(),
-          }));
-        });
+      this.db.list("/shopping-list").valueChanges().subscribe((data)=>{
+        this.shoppingList = data;
+      })
     }
 
 
