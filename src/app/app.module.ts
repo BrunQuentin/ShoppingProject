@@ -10,7 +10,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 
 import { MyApp } from './app.component';
 import { FB2Config } from './credentials';
-import { ShoppingListService } from '../services/shopping-list/shopping-list.service';
+//import { ShoppingListService } from '../services/shopping-list/shopping-list.service';
 
 // pages de mon application 
 //import { HomePage } from '../pages/home/home';
@@ -39,7 +39,7 @@ import { ShoppingListService } from '../services/shopping-list/shopping-list.ser
     StatusBar,
     SplashScreen,
     //ajout du service utiliser dans l'appli
-    ShoppingListService,
+   // ShoppingListService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

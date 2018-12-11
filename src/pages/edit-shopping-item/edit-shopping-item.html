@@ -1,5 +1,5 @@
 <!--
-  Generated template for the AddShoppingItemPage page.
+  Generated template for the EditShoppingItemPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color= "secondary">
-    <ion-title>Ajouter un article à la liste</ion-title>
+    <ion-title>{{item.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,9 +15,6 @@
 
 <ion-content padding>
 
-<!-- Creation of my items to buy and its
-    caracteristics
-  -->
   <ion-item>
     <ion-label >Nom :</ion-label>
     <ion-input placeholder="potatoes" 
@@ -39,9 +36,16 @@
     </ion-input>
   </ion-item>
 
-  <button ion-button block round (click)="addItem(item)">
-    Ajouter un article
+  <button ion-button block round 
+  (click)="saveItem(item)">
+   modifier un article
   </button>
+ 
+  <button ion-button block round color="danger" 
+  (click)="removeItem(item.key)">
+  supprimer un article
+</button>
 
   
+ 
 </ion-content>

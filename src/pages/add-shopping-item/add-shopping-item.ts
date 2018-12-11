@@ -19,8 +19,9 @@ export class AddShoppingItemPage {
 
   //creation d'un objet item
   item: Item = {
-   name:"",
-   quantity: undefined,
+    key:"",
+    name:"",
+    quantity: undefined,
    price: undefined,
 
   }

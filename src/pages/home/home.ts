@@ -21,6 +21,7 @@ export class HomePage {
       this.db.list("/shopping-list").valueChanges().subscribe((data)=>{
         this.shoppingList = data;
       })
+      
     }
 
 
